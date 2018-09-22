@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, Dimensions } from "react-native";
+import { Alert, Image, Dimensions } from "react-native";
 import { Container, Content, Button, Text } from "native-base";
 
 export default class HomeScreen extends Component {
@@ -7,8 +7,22 @@ export default class HomeScreen extends Component {
     super(props);
   }
 
-  searchPandas = () => {
-    console.log("chercher les pandas");
+  handleSearch = () => {
+    const success = response => {
+      const {
+        coords: { latitude, longitude }
+      } = response;
+      this.props.navigation.navigate("Results", {
+        longitude,
+        latitude
+      });
+    };
+    const failure = error => {
+      Alert.alert(
+        `Impossible de récupérer la position géographique : ${error.message}`
+      );
+    };
+    navigator.geolocation.getCurrentPosition(success, failure);
   };
 
   render() {
