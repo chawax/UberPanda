@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import {
   Body,
   Container,
@@ -12,6 +12,12 @@ import {
 } from "native-base";
 
 import data from "./pandas.json";
+
+const styles = StyleSheet.create({
+  coord: {
+    marginLeft: 10
+  }
+});
 
 export default class ResultsScreen extends Component {
   constructor(props) {
@@ -41,10 +47,14 @@ export default class ResultsScreen extends Component {
     return (
       <Container>
         <Content padder>
-          <View>
+          <View style={{ margin: 10 }}>
             <Text>Les pandas autour de vous :</Text>
-            <Text note>Latitude : {latitude}</Text>
-            <Text note>Longitude : {longitude}</Text>
+            <Text style={styles.coord} note>
+              Latitude : {latitude}
+            </Text>
+            <Text style={styles.coord} note>
+              Longitude : {longitude}
+            </Text>
           </View>
           <FlatList data={data} renderItem={this.renderItem} />
         </Content>
