@@ -3,10 +3,6 @@ import { Alert, Image, Dimensions } from "react-native";
 import { Container, Content, Button, Text } from "native-base";
 
 export default class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSearch = () => {
     const success = response => {
       const {

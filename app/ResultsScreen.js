@@ -7,7 +7,8 @@ import {
   ListItem,
   Text,
   Right,
-  Icon
+  Icon,
+  View
 } from "native-base";
 
 import data from "./pandas.json";
@@ -36,9 +37,15 @@ export default class ResultsScreen extends Component {
   };
 
   render() {
+    const { latitude, longitude } = this.props.navigation.state.params;
     return (
       <Container>
         <Content padder>
+          <View>
+            <Text>Les pandas autour de vous :</Text>
+            <Text note>Latitude : {latitude}</Text>
+            <Text note>Longitude : {longitude}</Text>
+          </View>
           <FlatList data={data} renderItem={this.renderItem} />
         </Content>
       </Container>
