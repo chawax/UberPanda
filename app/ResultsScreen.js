@@ -20,10 +20,6 @@ const styles = StyleSheet.create({
 });
 
 export default class ResultsScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handlePress = item => {
     this.props.navigation.navigate("Details", { item });
   };
